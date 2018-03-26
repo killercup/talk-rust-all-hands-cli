@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Pascal Hertleif">
+  <meta name="dcterms.date" content="2018-03-28">
+  <title>Writing CLIs in Rust is awesome</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="template/css/reveal.css">
+  <style type="text/css">
+    code{white-space: pre;}
+
+    
+    
+    .reveal a[href^="#"]:visited {
+      color: #8ea9d2;
+    }
+    
+    .reveal p, .slide {
+        line-height: 1.5 !important;
+    }
+  </style>
+  <link rel="stylesheet" href="template/css/theme/white.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'template/css/print/pdf.css' : 'template/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="template/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Writing CLIs in Rust is awesome</h1>
+  <p class="subtitle">…and it’s getting even better</p>
+  <p class="author">Pascal Hertleif</p>
+  <p class="date">2018-03-28</p>
+</section>
+
+<section id="hi-im-pascal" class="slide level2">
+<h2>Hi, I’m Pascal</h2>
+<p>{<a href="https://twitter.com/killercup">twitter</a>,<a href="https://github.com/killercup">github</a>}.com/killercup</p>
+<aside class="notes">
+<p>Super excited to be here at the first ever Rust All Hands! Yesterday was surprisingly productive, and it was super awesome to meet so many new real-life people who I happen to already know from the Internet.</p>
+</aside>
+</section>
+<section><section id="what-we-want-to-do" class="title-slide slide level1"><h1>What we want to do</h1></section><section class="slide level2">
+
+<ul>
+<li>famous crates: work with their authors to improve and stabilize</li>
+<li>write guide-level documentation
+<ul>
+<li>pitching Rust as a great lang for CLIs on the new website</li>
+<li>for specific crates and use cases</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="survey" class="title-slide slide level1"><h1>Survey</h1></section><section class="slide level2">
+
+<ul>
+<li>1,045 replies</li>
+<li>we’ll post pretty pictures soon</li>
+</ul>
+</section><section class="slide level2">
+
+<p><img data-src="./assets/gaps.svg" /></p>
+</section></section>
+<section><section id="areas-we-are-focussing-on" class="title-slide slide level1"><h1>Areas we are focussing on</h1></section><section id="handling-cli-input-should-be-concise" class="slide level2">
+<h2>Handling CLI input should be concise</h2>
+<ul>
+<li>clap 3.0 with custom derive</li>
+<li>config files, env vars, CLI flags build a configuration
+<ul>
+<li>best-practice-as-a-crate</li>
+</ul></li>
+</ul>
+</section><section id="outputting-stuff-in-cli-should-be-frictionless" class="slide level2">
+<h2>Outputting stuff in CLI should be frictionless</h2>
+<ul>
+<li>streaming and pipe handling</li>
+<li>logging
+<ul>
+<li>for humans and machines</li>
+<li>best-practice-as-a-crate</li>
+</ul></li>
+</ul>
+</section><section id="testing" class="slide level2">
+<h2>Testing</h2>
+<ul>
+<li>assert_cli refactoring &amp; 1.0</li>
+<li>guide on testing cli apps</li>
+</ul>
+</section><section id="distributing" class="slide level2">
+<h2>Distributing</h2>
+<ul>
+<li>Coordinate and consolidate already existing efforts</li>
+<li>we can’t do everything, but we can provide guidelines and scaffolding!</li>
+</ul>
+</section></section>
+<section><section id="this-is-happening-fast" class="title-slide slide level1"><h1>This is happening fast</h1></section><section id="quicli" class="slide level2">
+<h2>Quicli</h2>
+<ul>
+<li>re-exports commonly used items from other crates, e.g. structopt’s derive</li>
+<li>provides helpers like read_file (<code>-&gt; String</code>)</li>
+<li>gives you a <code>main!</code> so you can do <code>?</code> “in main” (and get logging set up)</li>
+</ul>
+</section><section class="slide level2">
+
+<ul>
+<li>since quicli 0.1 in january:
+<ul>
+<li>rayon 1.0 shipped</li>
+<li>failure 1.0 announced</li>
+<li>CLI WG started</li>
+</ul></li>
+<li>quicli might become obsolete soon!
+<ul>
+<li>clap 3 with include a custom derive (ETA: Before Rust 2018)</li>
+<li><code>std::fs::read_string</code> (bikeshed half painted)</li>
+<li><code>?</code> in main will be stable <em>very soon</em></li>
+</ul></li>
+</ul>
+</section><section class="slide level2">
+
+<p>…please keep doing this, folks</p>
+</section></section>
+<section><section id="thanks" class="title-slide slide level1"><h1>Thanks!</h1></section><section id="come-to-the-cli-wg-meeting-at-10pm-in-the-snow-room" class="slide level2">
+<h2>Come to the CLI WG meeting at 10pm in the “Snow” room</h2>
+<p>Slides available at <a href="https://git.io/rust-all-hands-cli-wg">git.io/rust-all-hands-cli-wg</a></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="template/lib/js/head.min.js"></script>
+  <script src="template/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'template/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'template/plugin/zoom-js/zoom.js', async: true },
+              { src: 'template/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
